@@ -17,10 +17,10 @@ export async function sendVerificationEmail(
             subject: 'Annonymouse Feedback | Verification Code',
             react: VerificationEmail({username, otp: verifyCode}),
           });
-        return{sucess: true, message: "Verificaiton email sent"}
+        return{success: true, message: "Verificaiton email sent"}
     } catch (emailError) {
         console.error("error sending Verification email", emailError);
-        return{sucess: false, message: "Failed to send Verification email"}
+        return{success: false, message: "Failed to send Verification email"}
         
     }
 }
