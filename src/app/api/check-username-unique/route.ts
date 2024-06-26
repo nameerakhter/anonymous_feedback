@@ -9,12 +9,6 @@ const UsernameQuerySchema = z.object({
 })
 
 export async function GET(request: Request){
-    // if (request.method !== 'GET') {
-    //     return Response.json({
-    //         success: false,
-    //         message: "Method not allowed"
-    //     },{status:405})
-    // } No longer needed in newer versions of nextjs
     await dbConnect()
 
     try {
