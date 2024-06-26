@@ -1,7 +1,7 @@
 import dbConnect from "@/lib/dbConnect";
 import UserModel from "@/model/User";
 import bcrypt from "bcryptjs";
-
+import { NextResponse } from 'next/server';
 import { sendVerificationEmail } from "@/helpers/sendVerificationEmail";
 
 
@@ -32,7 +32,7 @@ export async function POST(request: Request){
             }
             else{
                 const hashedPassword = await bcrypt.hash(password,10)
-                existingUserVerifiedByEmail.Password = hashedPassword;
+                existingUserVerifiedByEmail.password = hashedPassword;
                 existingUserVerifiedByEmail.verifyCode = verifyCode;
                 existingUserVerifiedByEmail.verifyCodeExpiry = new Date(Date.now() + 3600000)
                 await existingUserVerifiedByEmail.save()
