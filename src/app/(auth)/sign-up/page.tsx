@@ -74,7 +74,7 @@ const Page = () => {
         title: "Success",
         description: response.data.message,
       });
-      router.replace(`/verify/${username}`);
+      router.replace(`/verify/${data.username}`);
       setIsSubmitting(false);
     } catch (error) {
       console.log("error in signup of user", error);
@@ -88,6 +88,7 @@ const Page = () => {
       setIsSubmitting(false);
     }
   };
+  
 
   return (
     <div className="flex justify-center items-center min-h-screen bg-gray-100">
@@ -117,6 +118,9 @@ const Page = () => {
                     />
                   </FormControl>
                   {isCheckingUsername && <Loader2 className="animate-spin" />}
+                  <p className={`text-sm ${usernameMessage === "Username is unique"? 'text-green-500' : 'text-red-500'}`}>
+                    test {usernameMessage}
+                  </p>
                   <FormMessage />
                 </FormItem>
               )}

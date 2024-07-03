@@ -11,6 +11,14 @@ export async function POST(request: Request){
 
     try {
         const {username, email, password} = await request.json()
+
+        if (!username || !email || !password) {
+            return NextResponse.json({
+              success: false,
+              message: "All fields are required",
+            }, { status: 400 });
+          }
+          
         const existingUserVerifiedByUsername = await UserModel.findOne({
             username,
             isVerified: true
