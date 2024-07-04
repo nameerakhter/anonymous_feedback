@@ -2,8 +2,7 @@
 import { useToast } from "@/components/ui/use-toast";
 import { verifySchema } from "@/Schemas/verifySchema";
 import axios, { AxiosError } from "axios";
-import { useParams } from "next/navigation";
-import { useRouter } from "next/router";
+import { useParams, useRouter } from "next/navigation";
 import React from "react";
 import { useForm } from "react-hook-form";
 import * as z from "zod";
@@ -15,9 +14,9 @@ import { zodResolver } from "@hookform/resolvers/zod";
 
 
 const VerifyAccount = () => {
-  // const router = useRouter();
+  const router = useRouter()
   const params = useParams<{ username: string }>();
-  const { toast } = useToast();
+  const { toast } = useToast()
   const form = useForm<z.infer<typeof verifySchema>>({
     resolver: zodResolver(verifySchema),
   })
@@ -31,8 +30,8 @@ const VerifyAccount = () => {
       toast({
         title: "Success",
         description: response.data.message,
-      });
-      // router.replace("sign-in");
+      })
+      router.replace("/sign-in");
     } catch (error) {
       console.log("error in signup of user", error);
       const axiosError = error as AxiosError<ApiResponse>;
