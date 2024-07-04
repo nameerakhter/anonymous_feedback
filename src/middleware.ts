@@ -12,15 +12,16 @@ export async function middleware(request: NextRequest) {
         url.pathname.startsWith('/sign-in') ||
         url.pathname.startsWith('/sign-up') ||
         url.pathname.startsWith('/verify') ||
-        url.pathname === '/'
+        url.pathname.startsWith('/') 
+
     )) {
         return NextResponse.redirect(new URL('/dashboard', request.url));
     }
 
     // Redirect unauthenticated users trying to access protected routes to /home
+    // Exclude the /verify route from this condition
     if (!token && (
-        url.pathname.startsWith('/dashboard') ||
-        url.pathname.startsWith('/verify')
+        url.pathname.startsWith('/dashboard')
     )) {
         return NextResponse.redirect(new URL('/home', request.url));
     }
@@ -33,6 +34,7 @@ export const config = {
     matcher: [
         '/sign-in',
         '/sign-up',
+        '/',
         '/verify/:path*',
         '/dashboard/:path*',
     ],
