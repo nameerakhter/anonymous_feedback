@@ -25,23 +25,34 @@ import { useToast } from "./ui/use-toast";
 import axios from "axios";
 import { ApiResponse } from "../../types/ApiResponse";
 
-type messageCardsProps = {
+type MessageCardProps = {
   message: Message;
   onMessageDelete: (messageId: string) => void;
 };
 
-const MessageCard = ({ message, onMessageDelete }: messageCardsProps) => {
+const MessageCard = ({ message, onMessageDelete }: MessageCardProps) => {
   const { toast } = useToast();
   
   const handleDeleteConfirm = async () => {
-    const response = await axios.delete<ApiResponse>(
-      `/api/delete-message/${message._id}`
-    )
-    toast({
-      title: response.data.message,
-    })
-    onMessageDelete(message._id)
-  }
+    try {
+      const response = await axios.delete<ApiResponse>(
+        `/api/delete-message/${message._id}`
+      );
+      if (response.data.message) {
+        toast({
+          title: response.data.message,
+        });
+        onMessageDelete(message._id);
+      }
+    } catch (error) {
+      toast({
+        title: 'Error deleting message',
+        description: error instanceof Error ? error.message : 'An unknown error occurred',
+        variant: 'destructive',
+      });
+    }
+  };
+
   return (
     <Card>
       <CardHeader>
