@@ -1,36 +1,38 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Anonymous Feedback
 
-## Getting Started
+Anonymous Feedback is a web application that allows users to provide feedback anonymously. 
 
-First, run the development server:
+## Tech Stack
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+- **Next.js**
+- **NextAuth**
+- **Zod**
+- **Shadcn**
+- **TypeScript**
+- **Tailwind css**
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Features
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- Anonymous feedback submission
+- Secure authentication with NextAuth
+- Schema validation with Zod
+- Modern UI with Shadcn
+- Written in TypeScript for robust type checking
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
 
-## Learn More
+## Highlights
 
-To learn more about Next.js, take a look at the following resources:
+### Anonymous Feedback Landing Page
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+![Screenshot (8)](https://github.com/user-attachments/assets/0e439e3a-809a-47f1-abb0-62e6fb9c7d11)
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
 
-## Deploy on Vercel
+### User Onboarding
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+![Screenshot (10)](https://github.com/user-attachments/assets/91cd8c52-aac2-42d4-b6e7-137b7999c511)
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+
+### User Profile dashboard with message suggestion
+
+
+![Screenshot (11)](https://github.com/user-attachments/assets/bafa66bc-e33a-4e1c-908f-4b5ea50d8360)
