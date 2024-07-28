@@ -11,19 +11,15 @@ export async function middleware(request: NextRequest) {
     if (token && (
         url.pathname.startsWith('/sign-in') ||
         url.pathname.startsWith('/sign-up') ||
-        url.pathname.startsWith('/verify') ||
-        url.pathname.startsWith('/') 
-
+        url.pathname.startsWith('/verify')
     )) {
         return NextResponse.redirect(new URL('/dashboard', request.url));
     }
 
     // Redirect unauthenticated users trying to access protected routes to /home
     // Exclude the /verify route from this condition
-    if (!token && (
-        url.pathname.startsWith('/dashboard')
-    )) {
-        return NextResponse.redirect(new URL('/home', request.url));
+    if (!token && url.pathname.startsWith('/dashboard')) {
+        return NextResponse.redirect(new URL('/', request.url));
     }
 
     // Allow the request to proceed if it doesn't match the above conditions
@@ -35,6 +31,7 @@ export const config = {
         '/sign-in',
         '/sign-up',
         '/',
+        '/dashboard',
         '/verify/:path*',
         '/dashboard/:path*',
     ],
