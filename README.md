@@ -13,7 +13,7 @@ Anonymous Feedback is a web application that allows users to provide feedback an
 
 ## Features
 
-- Anonymous feedback submission
+- Anonymous feedback submission.
 - Secure authentication with NextAuth
 - Schema validation with Zod
 - Modern UI with Shadcn
